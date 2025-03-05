@@ -6996,6 +6996,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
         ALOGV("%s: unsupported device %s for output", __func__, devices.toString().c_str());
         // restore previous device after evaluating strategy mute state
         outputDesc->setDevices(prevDevices);
+        applyStreamVolumes(outputDesc, prevDevices.types(), delayMs, true /*force*/);
         return muteWaitMs;
     }
 
